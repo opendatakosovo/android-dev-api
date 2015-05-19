@@ -7,19 +7,17 @@ mod_geo = Blueprint('geo', __name__, url_prefix='/')
 
 @mod_geo.route('', methods=['GET'])
 def home():
-	'''
-	Show home page
-	'''
-	return render_template('mod_geo/geo.html')
+    '''
+    Show home page
+    '''
+    return render_template('mod_geo/geo.html')
 
 
 @mod_geo.route('geo-api', methods=['POST'])
 def geo():
-	json_string = request.data
-	json_obj = json_util.loads(json_string)
-	print request.data
-	mongo.db.geodata.insert(json_obj)
-	
-	resp = Response(status=200, mimetype='application/json')
 
-	return resp
+    json_obj = json_util.loads(request.data)
+    print json_obj
+    mongo.db.geodata.update(json_obj)
+    
+    return Response(status=200)
