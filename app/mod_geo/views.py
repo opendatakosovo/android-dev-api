@@ -17,7 +17,9 @@ def home():
 def geo():
 
     json_obj = json_util.loads(request.data)
-    print json_obj
-    mongo.db.geodata.update(json_obj)
+    
+    mongo.db.geodata.remove({})
+    
+    mongo.db.geodata.insert(json_obj)
     
     return Response(status=200)
