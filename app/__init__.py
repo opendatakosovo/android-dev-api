@@ -30,6 +30,7 @@ def create_app():
     #Initialize the app to work with MongoDB
     mongo.init_app(app, config_prefix='MONGO')
 
+
     return app
 
 
@@ -60,6 +61,7 @@ def load_config(app):
         app.config['LOG_PATH'] = app_dir + '/' + log_path
 
     app.config['LOG_LEVEL'] = config.get('Logging', 'LEVEL').upper()
+
 
 
 def configure_logging(app):
