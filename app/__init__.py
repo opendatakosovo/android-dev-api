@@ -21,10 +21,10 @@ def create_app():
     configure_logging(app)
 
     #Import blueprint modules
-    from app.mod_geo.views import mod_geo
+    from app.mod_api.views import mod_api
     
 
-    app.register_blueprint(mod_geo)
+    app.register_blueprint(mod_api)
     
 
     #Initialize the app to work with MongoDB
